@@ -58,7 +58,7 @@ Sigue estos pasos para poner en marcha la aplicación en tu entorno local:
 ## 📝 ¿Qué hace esta aplicación?
 
 - **Captura un baseline:** Toma una "foto" de las fechas clave de cada nodo en la base de datos.
-- **Compara el estado actual:** Permite comparar el estado actual de los nodos con el baseline para verificar si están cambiando.
+- **Compara el estado actual:** Permite comparar el estado actual de los nodos con el baseline para verificar si han cambiado correctamente tras un despliegue.
 - **Visualización clara:** Muestra métricas globales y una tabla detallada por nodo, indicando con iconos si cada campo ha cambiado como se esperaba.
 - **Auto-refresh:** Permite refrescar automáticamente la comparación a intervalos configurables.
 
