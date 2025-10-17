@@ -1,4 +1,4 @@
-# Verificador de Despliegue
+# Verificador de Nodos
 
 Bienvenido al **Verificador de Nodos**. Esta aplicación te permite comparar el estado actual de los nodos de una base de datos con una "foto" inicial (baseline), facilitando la verificación de despliegues y actualizaciones en sistemas conectados a MySQL a través de SSH.
 
