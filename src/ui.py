@@ -53,32 +53,15 @@ def render_top_panel(conn):
     return do_baseline, do_refresh_fsue, do_refresh_all, auto, interval
 
 # ====================================
-# Fila de filtro + métricas de la app
+# Métricas globales de los nodos
 # ====================================
-def render_filters_and_metrics(conn, mode: str):
-    left, right = st.columns([1, 3])
-
-    # Filtro de búsqueda
-    with left:
-        search_query = st.text_input(
-            "🔎 Buscar nodo o instalación",
-            value=st.session_state.get("SEARCH_QUERY", ""),
-            placeholder="Ej.: 123 o Instalación X",
-        )
-        if search_query != st.session_state.get("SEARCH_QUERY", ""):
-            st.session_state.SEARCH_QUERY = search_query
-            st.session_state.page = 0  # reset paginación cuando cambia el filtro
-
-    # Métricas globales
-    with right:
-        get_totals(conn, mode)
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("Nodos iniciales enviando",   st.session_state.totals_cache["TotalNodos"])
-        c2.metric("Nodos enviando",             st.session_state.totals_cache["Total_FSUE_OK"])
-        c3.metric("Nodos actualizando señales", st.session_state.totals_cache["Total_UFA_OK"])
-        c4.metric("Nodos registrando",          st.session_state.totals_cache["Total_UFH_OK"])
-
-    return st.session_state.get("SEARCH_QUERY", "")
+def render_metrics(conn, mode: str):
+    get_totals(conn, mode)
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Nodos iniciales enviando",   st.session_state.totals_cache["TotalNodos"])
+    c2.metric("Nodos enviando",             st.session_state.totals_cache["Total_FSUE_OK"])
+    c3.metric("Nodos actualizando señales", st.session_state.totals_cache["Total_UFA_OK"])
+    c4.metric("Nodos registrando",          st.session_state.totals_cache["Total_UFH_OK"])
 
 # ====================
 # Tabla + paginación

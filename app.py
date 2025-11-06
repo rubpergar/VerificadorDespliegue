@@ -7,7 +7,7 @@ import streamlit as st
 from db import ssh_tunnel, get_conn
 from ui import (
     render_top_panel,            # panel con controles + estadísticas DB (con separador vertical)
-    render_filters_and_metrics,  # fila con filtro y métricas de la app
+    render_metrics,              # fila con métricas de los nodos
     render_dashboard,            # tabla principal + paginación + selector tamaño
     render_empty_placeholder
 )
@@ -50,7 +50,7 @@ def main():
             set_refresh("all")
 
         # Fila de filtro + métricas
-        search_query = render_filters_and_metrics(conn, mode=st.session_state.refresh_mode or "all")
+        search_query = render_metrics(conn, mode=st.session_state.refresh_mode or "all")
 
         # Vista principal
         if st.session_state.baseline_done and (st.session_state.last_refresh is not None):
